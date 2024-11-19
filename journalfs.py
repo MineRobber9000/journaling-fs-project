@@ -22,7 +22,7 @@ def log(msg,c="*"):
 
 FakeEvent = namedtuple("FakeEvent",["name"])
 
-N = 5 # maximum entries in the list
+N = 50 # maximum entries in the list
 
 class Journaler(pyinotify.ProcessEvent):
 	def __init__(self):
