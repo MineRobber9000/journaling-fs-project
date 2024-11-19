@@ -1,0 +1,2 @@
+diff-match-patch==20241021
+pyinotify==0.9.6
