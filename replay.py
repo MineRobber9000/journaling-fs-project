@@ -45,9 +45,8 @@ patchset = db.execute("SELECT delta, mtime FROM entries WHERE journal = ?",[UUID
 if len(patchset)==0:
 	print("File is empty!")
 	sys.exit(0)
-print("Select a revision of the file:")
-n = select(patchset, lambda i, patch: f"{i}) {format_time(patch[1])}", False)
 content = ''
-for i in range(n+1): content = patch(content, patchset[i][0])
-print(f"{filename}, as it existed {format_time(patchset[n][1])}:\n---")
-print(content,end='')
+for delta, mtime in patchset:
+	print(f"---\nAt {format_time(mtime)}:\n---")
+	content = patch(content,delta)
+	print(content,end='')
